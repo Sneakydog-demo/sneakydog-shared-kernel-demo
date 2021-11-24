@@ -21,11 +21,10 @@ import java.io.InputStream;
 @ConfigurationProperties("application.minio")
 @ConditionalOnProperty(prefix = "application.minio", name = "enable", havingValue = "true")
 @ConditionalOnClass(MinioClient.class)
-public class OssConfiguration {
+class OssConfiguration {
     private final String endpoint;
     private final String accessKeyId;
     private final String accessKeySecret;
-    private final String bucketName;
 
     @SneakyThrows
     @Bean
