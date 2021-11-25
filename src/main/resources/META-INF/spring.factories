@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  dog.sneaky.demo.sharedkernel.oss.OssConfiguration,\
+  dog.sneaky.demo.sharedkernel.jackson.DefaultObjectMapperConfiguration,\
+  dog.sneaky.demo.sharedkernel.redis.RedisConfiguration
+

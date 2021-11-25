@@ -3,6 +3,7 @@ package dog.sneaky.demo.sharedkernel.oss;
 import io.minio.MinioClient;
 import io.minio.PutObjectArgs;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,19 +13,21 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 
 @RequiredArgsConstructor
 @Slf4j
+@Setter
 @Configuration
 @ConfigurationProperties("application.minio")
 @ConditionalOnProperty(prefix = "application.minio", name = "enable", havingValue = "true")
 @ConditionalOnClass(MinioClient.class)
 class OssConfiguration {
-    private final String endpoint;
-    private final String accessKeyId;
-    private final String accessKeySecret;
+    private String endpoint;
+    private String accessKeyId;
+    private String accessKeySecret;
 
     @SneakyThrows
     @Bean
@@ -46,6 +49,13 @@ class OssConfiguration {
                 } catch (Exception e) {
                     e.printStackTrace();
                     throw new RuntimeException(e);
+                } finally {
+                    if (inputStream != null) {
+                        try {
+                            inputStream.close();
+                        } catch (IOException ignored) {
+                        }
+                    }
                 }
             }
         };

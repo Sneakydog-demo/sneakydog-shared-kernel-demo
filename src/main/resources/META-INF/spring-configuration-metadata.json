@@ -1,0 +1,28 @@
+{
+  "properties": [
+    {
+      "name": "application.minio.enable",
+      "type": "java.lang.String",
+      "description": "Description for application.minio.enable."
+    },
+    {
+      "name": "application.minio.endpoint",
+      "type": "java.lang.String",
+      "description": "Description for application.minio.endpoint."
+    },
+    {
+      "name": "application.minio.accessKeyId",
+      "type": "java.lang.String",
+      "description": "Description for application.minio.accessKeyId."
+    },
+    {
+      "name": "application.minio.accessKeySecret",
+      "type": "java.lang.String",
+      "description": "Description for application.minio.accessKeySecret."
+    },
+    {
+      "name": "application.minio.bucketName",
+      "type": "java.lang.String",
+      "description": "Description for application.minio.bucketName."
+    }
+  ] }
