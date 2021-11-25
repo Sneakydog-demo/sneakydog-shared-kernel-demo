@@ -7,10 +7,10 @@ services:
     restart: always
     ports:
       - "9000:9000"
-    command: server /data
+      - "9001:9001"
+    command: server /data --console-address ":9001"
     environment:
-      MINIO_ACCESS_KEY: minio
-      MINIO_SECRET_KEY: 123456
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: 1234567890
     volumes:
       - ./data:/data
-      - ./config:/root/.minio/
