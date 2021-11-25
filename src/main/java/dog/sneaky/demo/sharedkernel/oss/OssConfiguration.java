@@ -48,7 +48,7 @@ class OssConfiguration {
                     minioClient.putObject(putObjectArgs);
                 } catch (Exception e) {
                     e.printStackTrace();
-                    throw new RuntimeException(e);
+                    throw new RuntimeException("上传文件失败!!!", e);
                 } finally {
                     if (inputStream != null) {
                         try {
