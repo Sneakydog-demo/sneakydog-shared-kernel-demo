@@ -37,14 +37,16 @@ class OssConfiguration {
     }
 
     @Bean
-    public OssClient ossClient(MinioClient minioClient, @Value("application.minio.bucketName") String bucketName) {
+    public OssClient ossClient(MinioClient minioClient, @Value("${application.minio.bucketName}") String bucketName) {
         return new OssClient() {
             @Override
             public void putObject(InputStream inputStream, String objectName) {
-                final PutObjectArgs.Builder builder = PutObjectArgs.builder();
-                builder.bucket(bucketName).object(objectName).stream(inputStream, 0, -1);
-                final PutObjectArgs putObjectArgs = builder.build();
+
                 try {
+                    final PutObjectArgs.Builder builder = PutObjectArgs.builder();
+                    final int available = inputStream.available();
+                    builder.bucket(bucketName).object(objectName).stream(inputStream, available, -1);
+                    final PutObjectArgs putObjectArgs = builder.build();
                     minioClient.putObject(putObjectArgs);
                 } catch (Exception e) {
                     e.printStackTrace();
