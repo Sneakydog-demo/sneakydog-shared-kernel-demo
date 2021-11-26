@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConditionalOnClass(ObjectMapper.class)
 public class DefaultObjectMapperConfiguration {
+
     @Bean
     public DefaultObjectMapper objectMapper() {
         return new DefaultObjectMapper();

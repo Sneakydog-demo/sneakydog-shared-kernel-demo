@@ -23,7 +23,7 @@ import static java.time.ZoneId.of;
 import static java.util.TimeZone.getTimeZone;
 
 
-public class DefaultObjectMapper extends ObjectMapper {
+public final class DefaultObjectMapper extends ObjectMapper {
 
     public DefaultObjectMapper() {
         super();
