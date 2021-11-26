@@ -19,6 +19,7 @@
     <properties>
         <java.version>1.8</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -55,6 +56,14 @@
         </dependency>
     </dependencies>
 
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/sneakydog-demo/maven-repository</url>
+        </repository>
+    </distributionManagement>
 
 
 </project>
